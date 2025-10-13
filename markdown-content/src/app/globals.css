@@ -1,26 +1,154 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
+/* -------------------------------
+   CUSTOM VARIANTS FOR DARK MODE
+--------------------------------*/
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* -------------------------------
+   ROOT VARIABLES (LIGHT MODE)
+--------------------------------*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--background: #f6f9f5;
+	--foreground: #171717;
+
+	--sh-class: #7aa2f7;
+	--sh-sign: #89ddff;
+	--sh-string: #9ece6a;
+	--sh-keyword: #bb9af7;
+	--sh-comment: #565f89;
+	--sh-jsxliterals: #7aa2f7;
+	--sh-property: #73daca;
+	--sh-entity: #e0af68;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-vollkron: var(--font-vollkron);
+	--font-work-sans: var(--font-work-sans);
+	--color-primary-black: #161313;
+	--color-primary-white: #f6f9f5;
+	--color-primary: #ff6500;
+	--color-border: #262626;
+	--color-gray: #c0c0c0;
+	--color-priamry-button-color: #e63e21;
+	--color-secondary-background-color: #1b1b1b;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* -------------------------------
+   DARK MODE OVERRIDES
+--------------------------------*/
+.dark {
+	--background: #0a0a0a;
+	--foreground: #ededed;
+	--input-border: #374151;
+	--input-placeholder: #6b7280;
+}
+
+/* -------------------------------
+   GLOBAL STYLES
+--------------------------------*/
+html {
+	min-width: 360px;
+	scrollbar-gutter: stable;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	background-color: var(--background);
+	color: var(--foreground);
+	font-family: Arial, Helvetica, sans-serif;
+	text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	text-wrap: balance;
+
+	@apply font-vollkron text-primary-black dark:text-gray;
+}
+
+p {
+	@apply font-work-sans text-primary-black dark:text-gray;
+}
+
+label {
+	@apply font-vollkron text-primary-black dark:text-gray;
+}
+
+pre {
+	background-color: #16161e;
+	border-radius: 0.5rem;
+	overflow-x: auto;
+	padding: 1rem;
+	margin: 1.5rem 0;
+	line-height: 1;
+}
+
+pre::-webkit-scrollbar {
+	display: none;
+}
+
+pre {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+code {
+	font-family: "Menlo", "Monaco", "Courier New", monospace;
+	font-size: 14px;
+	padding: 0.2em 0.4em;
+	border-radius: 0.3em;
+	background-color: var(--color-gray-100);
+}
+
+pre code {
+	background-color: transparent;
+	padding: 0;
+	border: none;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+pre code > span .sh__token--identifier {
+	color: white !important;
+}
+
+code:not(pre code) span {
+	font-weight: 500;
+	color: black !important;
+}
+
+pre code span {
+	font-weight: 500;
+}
+
+hr {
+	color: var(--color-gray-200);
+}
+
+/* -------------------------------
+   TABLE STYLES
+--------------------------------*/
+table {
+	display: block;
+	max-width: fit-content;
+	overflow-x: auto;
+	white-space: nowrap;
+	text-align: left;
+}
+
+/* -------------------------------
+   DARK MODE SPECIFIC CODE COLORS
+--------------------------------*/
+.dark code:not(pre code) span {
+	color: var(--color-zinc-100) !important;
+}
+
+.dark pre code {
+	background-color: #16161e;
 }
