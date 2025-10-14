@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/* -------------------------------
+   CUSTOM VARIANTS FOR DARK MODE
+--------------------------------*/
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* -------------------------------
+   ROOT VARIABLES (LIGHT MODE)
+--------------------------------*/
+:root {
+	--background: #f6f9f5;
+	--foreground: #171717;
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-vollkron: var(--font-vollkron);
+	--font-work-sans: var(--font-work-sans);
+	--color-primary-black: #161313;
+	--color-primary-white: #f6f9f5;
+	--color-primary: #ff6500;
+	--color-border: #262626;
+	--color-gray: #c0c0c0;
+	--color-priamry-button-color: #e63e21;
+	--color-secondary-background-color: #1b1b1b;
+}
+
+/* -------------------------------
+   DARK MODE OVERRIDES
+--------------------------------*/
+.dark {
+	--background: #0a0a0a;
+	--foreground: #ededed;
+	--input-border: #374151;
+	--input-placeholder: #6b7280;
+}
+
+/* -------------------------------
+   GLOBAL STYLES
+--------------------------------*/
+
+body {
+	background-color: var(--background);
+	color: var(--foreground);
+	font-family: Arial, Helvetica, sans-serif;
+	text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	text-wrap: balance;
+
+	@apply font-vollkron text-primary-black dark:text-gray;
+}
+
+p {
+	@apply font-work-sans text-primary-black dark:text-gray;
+}
+
+label {
+	@apply font-vollkron text-primary-black dark:text-gray;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
+	appearance: textfield;
+}
