@@ -1,3 +1,5 @@
+"use server";
+
 import { ApiResponse, SignInFormData, signInSchema } from "../lib/types";
 
 export const handleSignIn = async (
