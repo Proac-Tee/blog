@@ -1,17 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-	--color-primary: #18e1c9;
-	--color-secondary: #034459;
-
-	--color-primary-light: #18e1c966;
-	--color-secondary-light: #03445966;
-
-	--color-gray: #e6ecee;
-
-	--color-white: #ffffff;
-
-	--color-black: #2e2c34;
+	--color-ui-primary: #0077b6;
+	--color-ui-secondary: #ff7a00;
+	--color-ui-white: #ffffff;
+	--color-ui-gray: #363636;
+	--color-ui-light-gray: #36363633;
 }
 
 .ripple {

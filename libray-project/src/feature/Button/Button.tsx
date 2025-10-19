@@ -1,11 +1,11 @@
 "use client";
 
+import { Loader } from "@/svg/Loader";
 import type { ButtonHTMLAttributes, FC, MouseEvent, ReactNode } from "react";
 import { buttonVariant } from "./variant";
 import type { VariantProps } from "class-variance-authority";
-import { useRipple } from "./hooks/useRipple";
 import { cn } from "@/lib/utils";
-import { Loader } from "@/svg/Loader";
+import { useRipple } from "./hooks/useRipple";
 
 export type ButtonProps = Omit<
 	ButtonHTMLAttributes<HTMLButtonElement>,
@@ -44,7 +44,7 @@ export const Button: FC<ButtonProps> = ({
 		<button
 			onClick={handleClick}
 			className={cn(
-				"relative overflow-hidden focus:outline-transparent",
+				"relative overflow-hidden",
 				buttonVariant({
 					intent,
 					size,
@@ -55,7 +55,8 @@ export const Button: FC<ButtonProps> = ({
 				}),
 				className,
 			)}
-			disabled={disabled ?? loading}
+			disabled={disabled || loading}
+			aria-busy={loading}
 			{...props}
 		>
 			{loading && (
