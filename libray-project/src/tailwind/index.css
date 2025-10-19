@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+	--color-primary: #18e1c9;
+	--color-secondary: #034459;
+
+	--color-primary-light: #18e1c966;
+	--color-secondary-light: #03445966;
+
+	--color-gray: #e6ecee;
+
+	--color-white: #ffffff;
+
+	--color-black: #2e2c34;
+}
+
+.ripple {
+	position: absolute;
+	border-radius: 50%;
+	transform: scale(0);
+	animation: ripple-animation 600ms linear;
+	pointer-events: none;
+}
+
+@keyframes ripple-animation {
+	to {
+		transform: scale(2);
+		opacity: 0;
+	}
+}
